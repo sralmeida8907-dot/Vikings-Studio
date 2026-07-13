@@ -1,12 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vikings Studio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vikings Studio</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#111;
+    color:#fff;
+}
+
+header{
+    background:#000;
+    padding:20px;
+    text-align:center;
+    border-bottom:3px solid #d4af37;
+}
+
+h1{
+    margin:0;
+    color:#d4af37;
+}
+
+p{
+    color:#ccc;
+}
+
+.menu{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+    padding:30px;
+}
+
+.botao{
+    background:#1f1f1f;
+    padding:20px;
+    text-align:center;
+    border-radius:12px;
+    border:2px solid #d4af37;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.botao:hover{
+    background:#d4af37;
+    color:#000;
+}
+</style>
 </head>
+
 <body>
-  <h1>Vikings Studio</h1>
-  <p>Bem-vindo ao sistema da Vikings Studio.</p>
+
+<header>
+<h1>⚔️ Vikings Studio</h1>
+<p>Forjado para homens de atitude</p>
+</header>
+
+<div class="menu">
+<div class="botao">👤 Clientes</div>
+<div class="botao">📅 Agendamentos</div>
+<div class="botao">✂️ Serviços</div>
+<div class="botao">🛍 Produtos</div>
+<div class="botao">📊 Relatórios</div>
+<div class="botao">💰 Caixa</div>
+</div>
+
 </body>
 </html>
