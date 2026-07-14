@@ -1,76 +1,142 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Agendamento - Viking Estúdio</title>
 
 <style>
+
 body {
-  font-family: Arial, sans-serif;
-  background: #111;
-  color: white;
-  padding: 20px;
+font-family: Arial, sans-serif;
+background:#111;
+color:white;
+padding:20px;
 }
 
 .container {
-  max-width: 400px;
-  margin: auto;
-  background: #222;
-  padding: 25px;
-  border-radius: 15px;
+max-width:400px;
+margin:auto;
+background:#222;
+padding:25px;
+border-radius:15px;
 }
 
 h1 {
-  text-align: center;
-  color: #d4af37;
+text-align:center;
+color:#d4af37;
 }
 
 input, select, button {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  border-radius: 8px;
-  border: none;
+width:100%;
+padding:12px;
+margin:8px 0;
+border-radius:8px;
+border:none;
 }
 
 button {
-  background: #d4af37;
-  font-weight: bold;
-  cursor: pointer;
+background:#d4af37;
+font-weight:bold;
+cursor:pointer;
 }
+
+small {
+color:#ccc;
+}
+
 </style>
 
 </head>
+
 
 <body>
 
 <div class="container">
 
-<h1>Viking Estúdio</h1>
-<p>Agende seu horário</p>
+<h1>⚔️ Viking Estúdio</h1>
+
+<p>📅 Agende seu horário</p>
+
+
+<label>Serviço:</label>
 
 <select id="servico">
-<option>Corte - R$20</option>
-<option>Barba - R$20</option>
-<option>Corte + Barba - R$38</option>
-<option>Pigmentação - R$10</option>
+
+<option value="Corte + Barba - R$38 | 45 minutos">💈 Corte + Barba - R$38 (45 min)</option>
+
+<option value="Corte + Hidratação - R$25 | 35 minutos">💧 Corte + Hidratação - R$25 (35 min)</option>
+
+<option value="Corte + Sobrancelha - R$25 | 45 minutos">👁️ Corte + Sobrancelha - R$25 (45 min)</option>
+
+<option value="Corte Masculino - R$20 | 30 minutos">✂️ Corte Masculino - R$20 (30 min)</option>
+
+<option value="Barba - R$20 | 15 minutos">🧔 Barba - R$20 (15 min)</option>
+
+<option value="Hidratação - R$10 | 5 minutos">✨ Hidratação - R$10 (5 min)</option>
+
+<option value="Sobrancelha - R$10 | 5 minutos">👁️ Sobrancelha - R$10 (5 min)</option>
+
+<option value="Pezinho - R$10 | 5 minutos">✂️ Pezinho - R$10 (5 min)</option>
+
+<option value="Pigmentação Perfil - R$10 | 15 minutos">🎨 Pigmentação Perfil - R$10 (15 min)</option>
+
+<option value="Pigmentação Cabelo - R$20 | 15 minutos">🔥 Pigmentação Cabelo - R$20 (15 min)</option>
+
+<option value="Epilação Nasal - R$10 | 10 minutos">👃 Epilação Nasal - R$10 (10 min)</option>
+
+<option value="Limpeza de Pele - R$15 | 15 minutos">🧴 Limpeza de Pele - R$15 (15 min)</option>
+
 </select>
+
+
+<label>Data:</label>
 
 <input type="date" id="data">
 
-<input type="time" id="hora">
+
+<label>Horário:</label>
+
+<select id="hora">
+
+<option>08:00</option>
+<option>09:00</option>
+<option>10:00</option>
+<option>11:00</option>
+<option>12:00</option>
+<option>13:00</option>
+<option>14:00</option>
+<option>15:00</option>
+<option>16:00</option>
+<option>17:00</option>
+<option>18:00</option>
+<option>19:00</option>
+
+</select>
+
+
+<label>Nome:</label>
 
 <input type="text" id="nome" placeholder="Seu nome">
 
+
+<label>WhatsApp:</label>
+
 <input type="tel" id="telefone" placeholder="Seu WhatsApp">
 
-<button onclick="agendar()">Confirmar Agendamento</button>
+
+<button onclick="agendar()">
+✅ Confirmar Agendamento
+</button>
+
 
 </div>
 
 
 <script>
+
 function agendar(){
 
 let servico = document.getElementById("servico").value;
@@ -78,12 +144,22 @@ let data = document.getElementById("data").value;
 let hora = document.getElementById("hora").value;
 let nome = document.getElementById("nome").value;
 
-let mensagem = `Olá, quero agendar no Viking Estúdio.%0A%0AServiço: ${servico}%0AData: ${data}%0AHorário: ${hora}%0ANome: ${nome}`;
+
+let mensagem =
+`Olá, quero agendar no Viking Estúdio.%0A%0A`+
+`Serviço: ${servico}%0A`+
+`Data: ${data}%0A`+
+`Horário: ${hora}%0A`+
+`Nome: ${nome}`;
+
 
 window.open("https://wa.me/5575981478061?text=" + mensagem);
 
 }
+
 </script>
 
+
 </body>
+
 </html>
