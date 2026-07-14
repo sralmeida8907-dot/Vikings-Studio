@@ -8,7 +8,6 @@
 <title>Agendamento - Viking Estúdio</title>
 
 <style>
-
 body {
 font-family: Arial, sans-serif;
 background:#111;
@@ -42,15 +41,9 @@ background:#d4af37;
 font-weight:bold;
 cursor:pointer;
 }
-
-small {
-color:#ccc;
-}
-
 </style>
 
 </head>
-
 
 <body>
 
@@ -63,44 +56,34 @@ color:#ccc;
 
 <label>Serviço:</label>
 
-<select id="servico">
+<select id="servico" onchange="tempoServico()">
 
-<option value="Corte + Barba - R$38 | 45 minutos">💈 Corte + Barba - R$38 (45 min)</option>
-
-<option value="Corte + Hidratação - R$25 | 35 minutos">💧 Corte + Hidratação - R$25 (35 min)</option>
-
-<option value="Corte + Sobrancelha - R$25 | 45 minutos">👁️ Corte + Sobrancelha - R$25 (45 min)</option>
-
-<option value="Corte Masculino - R$20 | 30 minutos">✂️ Corte Masculino - R$20 (30 min)</option>
-
-<option value="Barba - R$20 | 15 minutos">🧔 Barba - R$20 (15 min)</option>
-
-<option value="Hidratação - R$10 | 5 minutos">✨ Hidratação - R$10 (5 min)</option>
-
-<option value="Sobrancelha - R$10 | 5 minutos">👁️ Sobrancelha - R$10 (5 min)</option>
-
-<option value="Pezinho - R$10 | 5 minutos">✂️ Pezinho - R$10 (5 min)</option>
-
-<option value="Pigmentação Perfil - R$10 | 15 minutos">🎨 Pigmentação Perfil - R$10 (15 min)</option>
-
-<option value="Pigmentação Cabelo - R$20 | 15 minutos">🔥 Pigmentação Cabelo - R$20 (15 min)</option>
-
-<option value="Epilação Nasal - R$10 | 10 minutos">👃 Epilação Nasal - R$10 (10 min)</option>
-
-<option value="Limpeza de Pele - R$15 | 15 minutos">🧴 Limpeza de Pele - R$15 (15 min)</option>
+<option value="Corte + Barba" data-tempo="45">💈 Corte + Barba - R$38 (45 min)</option>
+<option value="Corte + Hidratação" data-tempo="35">💧 Corte + Hidratação - R$25 (35 min)</option>
+<option value="Corte + Sobrancelha" data-tempo="45">👁️ Corte + Sobrancelha - R$25 (45 min)</option>
+<option value="Corte Masculino" data-tempo="30">✂️ Corte Masculino - R$20 (30 min)</option>
+<option value="Barba" data-tempo="15">🧔 Barba - R$20 (15 min)</option>
+<option value="Hidratação" data-tempo="5">✨ Hidratação - R$10 (5 min)</option>
+<option value="Sobrancelha" data-tempo="5">👁️ Sobrancelha - R$10 (5 min)</option>
+<option value="Pezinho" data-tempo="5">✂️ Pezinho - R$10 (5 min)</option>
+<option value="Pigmentação Perfil" data-tempo="15">🎨 Pigmentação Perfil - R$10 (15 min)</option>
+<option value="Pigmentação Cabelo" data-tempo="15">🔥 Pigmentação Cabelo - R$20 (15 min)</option>
+<option value="Epilação Nasal" data-tempo="10">👃 Epilação Nasal - R$10 (10 min)</option>
+<option value="Limpeza de Pele" data-tempo="15">🧴 Limpeza de Pele - R$15 (15 min)</option>
 
 </select>
 
 
-<label>Data:</label>
+<input type="hidden" id="duracao" value="45">
 
+
+<label>Data:</label>
 <input type="date" id="data">
 
 
 <label>Horário:</label>
 
 <select id="hora">
-
 <option>08:00</option>
 <option>09:00</option>
 <option>10:00</option>
@@ -113,16 +96,10 @@ color:#ccc;
 <option>17:00</option>
 <option>18:00</option>
 <option>19:00</option>
-
 </select>
 
 
-<label>Nome:</label>
-
 <input type="text" id="nome" placeholder="Seu nome">
-
-
-<label>WhatsApp:</label>
 
 <input type="tel" id="telefone" placeholder="Seu WhatsApp">
 
@@ -131,35 +108,67 @@ color:#ccc;
 ✅ Confirmar Agendamento
 </button>
 
-
 </div>
 
 
 <script>
 
+const urlPlanilha = "https://script.google.com/macros/s/AKfycbywAMjTC3SSwvwZlDERz69s_NWTJLNEvkp80tGzCx5guJA1zfQppxPEXFQEKrBZ3jXZ/exec";
+
+
+function tempoServico(){
+
+let servico = document.getElementById("servico");
+
+let tempo = servico.options[servico.selectedIndex].dataset.tempo;
+
+document.getElementById("duracao").value = tempo;
+
+}
+
+
+
 function agendar(){
 
-let servico = document.getElementById("servico").value;
-let data = document.getElementById("data").value;
-let hora = document.getElementById("hora").value;
-let nome = document.getElementById("nome").value;
+let dados = {
+
+nome: document.getElementById("nome").value,
+
+telefone: document.getElementById("telefone").value,
+
+servico: document.getElementById("servico").value,
+
+data: document.getElementById("data").value,
+
+hora: document.getElementById("hora").value,
+
+duracao: document.getElementById("duracao").value + " minutos"
+
+};
 
 
-let mensagem =
+fetch(urlPlanilha, {
+
+method:"POST",
+
+body:JSON.stringify(dados)
+
+});
+
+
+let mensagem = 
 `Olá, quero agendar no Viking Estúdio.%0A%0A`+
-`Serviço: ${servico}%0A`+
-`Data: ${data}%0A`+
-`Horário: ${hora}%0A`+
-`Nome: ${nome}`;
+`Serviço: ${dados.servico}%0A`+
+`Data: ${dados.data}%0A`+
+`Horário: ${dados.hora}%0A`+
+`Nome: ${dados.nome}`;
 
 
-window.open("https://wa.me/5575981478061?text=" + mensagem);
+window.open("https://wa.me/5575981478061?text="+mensagem);
 
 }
 
 </script>
 
-
 </body>
-
 </html>
