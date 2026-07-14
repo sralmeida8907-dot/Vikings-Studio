@@ -60,15 +60,22 @@ footer {
     text-align: center;
     padding: 20px;
 }
-#inicio {
-    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65));
-    text-align: center;
-    padding: 120px 20px;
-}
+
 
 #inicio h2 {
     font-size: 55px;
-    color: #d4af37;
+    #inicio {
+    background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+        url("../img/banner.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    text-align: center;
+    padding: 120px 20px;
+}color: #d4af37;
     margin-bottom: 10px;
 }
 
