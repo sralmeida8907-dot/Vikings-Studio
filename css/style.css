@@ -67,7 +67,7 @@ footer {
     #inicio {
     background:
         linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-        url("../img/banner.jpg");
+        url("/img/banner.jpg");
 
     background-size: cover;
     background-position: center;
