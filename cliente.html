@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agendamento - Viking Estúdio</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: white;
+  padding: 20px;
+}
+
+.container {
+  max-width: 400px;
+  margin: auto;
+  background: #222;
+  padding: 25px;
+  border-radius: 15px;
+}
+
+h1 {
+  text-align: center;
+  color: #d4af37;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: none;
+}
+
+button {
+  background: #d4af37;
+  font-weight: bold;
+  cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Viking Estúdio</h1>
+<p>Agende seu horário</p>
+
+<select id="servico">
+<option>Corte - R$20</option>
+<option>Barba - R$20</option>
+<option>Corte + Barba - R$38</option>
+<option>Pigmentação - R$10</option>
+</select>
+
+<input type="date" id="data">
+
+<input type="time" id="hora">
+
+<input type="text" id="nome" placeholder="Seu nome">
+
+<input type="tel" id="telefone" placeholder="Seu WhatsApp">
+
+<button onclick="agendar()">Confirmar Agendamento</button>
+
+</div>
+
+
+<script>
+function agendar(){
+
+let servico = document.getElementById("servico").value;
+let data = document.getElementById("data").value;
+let hora = document.getElementById("hora").value;
+let nome = document.getElementById("nome").value;
+
+let mensagem = `Olá, quero agendar no Viking Estúdio.%0A%0AServiço: ${servico}%0AData: ${data}%0AHorário: ${hora}%0ANome: ${nome}`;
+
+window.open("https://wa.me/5575981478061?text=" + mensagem);
+
+}
+</script>
+
+</body>
+</html>
